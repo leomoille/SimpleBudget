@@ -1,0 +1,19 @@
+@startuml
+
+'Property types is Doctrine types
+
+class BudgetEntry {
+    string name
+    integer value
+    text notes
+}
+
+class Budget {
+    string name
+    getTotal()
+}
+
+
+BudgetEntry "1..*" -- "1" Budget
+
+@enduml
