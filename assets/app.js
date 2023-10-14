@@ -11,5 +11,8 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 
+// Theme
+import './styles/bootstrap.min.css'
+
 // form CollectionType
 import './add-collection-widget'

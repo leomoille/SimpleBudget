@@ -22,7 +22,7 @@ class Budget
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'budget', targetEntity: BudgetEntry::class, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'budget', targetEntity: BudgetEntry::class, cascade: ['persist', 'remove'])]
     private Collection $budgetEntries;
 
     public function __construct()
@@ -98,6 +98,6 @@ class Budget
             $total += $entry->getValue();
         }
 
-        return (float) $total / 100;
+        return (float) $total;
     }
 }

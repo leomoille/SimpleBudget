@@ -20,13 +20,13 @@
                 {% for entry in budget.budgetEntries %}
                     <tr>
                         <td>{{ entry.name }}</td>
-                        <td>{{ entry.value / 100 }}</td>
+                        <td>{{ entry.value|number_format(2) }}</td>
                         <td>{{ entry.notes }}</td>
                     </tr>
                 {% endfor %}
                 <tr class="fw-bold">
                     <td>Total</td>
-                    <td>{{ budget.getTotal }}</td>
+                    <td>{{ budget.getTotal|number_format(2) }}</td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -34,7 +34,7 @@
         </div>
         <div class="mt-4">
             <a href="{{ path('app_budget_single_edit', {id: budget.id}) }}" class="btn btn-primary">Modifier</a>
-            <a href="{{ path('app_budget') }}" class="btn btn-outline-danger">Supprimer</a>
+            <a href="{{ path('app_budget_single_remove', {id: budget.id}) }}" class="btn btn-outline-danger">Supprimer</a>
         </div>
     </div>
 {% endblock %}

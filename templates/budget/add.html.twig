@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme budgetForm 'bootstrap_5_layout.html.twig' %}
 
-{% block title %}Modification de {{ budget.name }} - SimpleBudget{% endblock %}
+{% block title %}Ajouter un budget - SimpleBudget{% endblock %}
 
 {% block body %}
     <div class="container mx-auto px-4">
@@ -15,8 +15,9 @@
             {{ form_widget(budgetForm.budgetEntries) }}
         </div>
         <div class="mb-3 row">
-            <button type="submit" class="btn btn-success mt-4">Mettre à jour mon budget</button>
+            <button type="submit" class="btn btn-success">Créer mon budget</button>
         </div>
         {{ form_end(budgetForm) }}
     </div>
 {% endblock %}
+
