@@ -1,4 +1,4 @@
-name: PHP Composer
+name: App tests
 
 on:
   pull_request:
@@ -28,6 +28,9 @@ jobs:
 
       - name: Install dependencies
         run: composer install
+
+      - name: Create test database
+        run: php bin/console doctrine:database:create --env=test
 
       - name: Run Symfony migrations for test database
         run: php bin/console doctrine:migrations:migrate --env=test
