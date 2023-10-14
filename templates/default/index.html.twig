@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mt-4 mb-4">Bienvenue sur SimpleBudget</h1>
+
+    <div class="row text-center mt-4 mb-4">
+        <div class="col-12">
+            <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg">Connexion</a>
+            <a href="{{ path('app_register') }}" class="btn btn-outline-primary btn-lg">Inscription</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
