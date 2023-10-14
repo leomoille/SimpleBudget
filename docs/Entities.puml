@@ -13,7 +13,13 @@ class Budget {
     getTotal()
 }
 
+class User {
+    string email
+    string password
+    string[] roles
+}
 
 BudgetEntry "1..*" -- "1" Budget
+Budget "0..*" -- "1" User
 
 @enduml

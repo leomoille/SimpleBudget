@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% form_theme budgetForm 'bootstrap_5_horizontal_layout.html.twig' %}
+
+{% block title %}Modification de {{ budget.name }} - SimpleBudget{% endblock %}
+
+{% block body %}
+    <div class="container mx-auto px-4">
+        {{ form_start(budgetForm) }}
+
+        {{ form_row(budgetForm.name) }}
+
+        <div class="mt-4">
+            {{ form_label(budgetForm.budgetEntries) }}
+            {{ form_errors(budgetForm.budgetEntries) }}
+            {{ form_widget(budgetForm.budgetEntries) }}
+        </div>
+        <div class="mb-3 row">
+            <button type="submit" class="btn btn-success">Mettre à jour le budget</button>
+        </div>
+        {{ form_end(budgetForm) }}
+    </div>
+{% endblock %}
