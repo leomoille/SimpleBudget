@@ -7,7 +7,7 @@ a2lix_lib.sfCollection.init({
     add: {
       prototype:
           '<button class="__class__" data-entry-action="add">__label__</button>',
-      class: 'btn btn-primary w-100 mb-3',
+      class: 'btn btn-primary',
       label: 'Ajouter',
       customFn: null,
       onBeforeFn: null,

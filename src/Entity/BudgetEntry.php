@@ -43,14 +43,14 @@ class BudgetEntry
         return $this;
     }
 
-    public function getValue(): ?int
+    public function getValue(): ?float
     {
-        return $this->value;
+        return $this->value / 100;
     }
 
-    public function setValue(int $value): static
+    public function setValue(float $value): static
     {
-        $this->value = $value;
+        $this->value = $value * 100;
 
         return $this;
     }

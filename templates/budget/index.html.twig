@@ -6,8 +6,10 @@
     <div class="container">
         <h1 class="text-center mt-4 mb-4">Vos budgets</h1>
 
+        <a href="{{ path('app_budget_add') }}" class="btn btn-success mb-4">Ajouter un budget</a>
+
         {% for budget in budgets %}
-            <div class="card">
+            <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title">{{ budget.name }}</h2>
                     <div>
@@ -23,13 +25,13 @@
                             {% for entry in budget.budgetEntries %}
                                 <tr>
                                     <td>{{ entry.name }}</td>
-                                    <td>{{ entry.value / 100 }}</td>
+                                    <td>{{ entry.value|number_format(2) }}</td>
                                     <td>{{ entry.notes }}</td>
                                 </tr>
                             {% endfor %}
                             <tr class="fw-bold">
                                 <td>Total</td>
-                                <td>{{ budget.getTotal }}</td>
+                                <td>{{ budget.getTotal|number_format(2) }}</td>
                                 <td></td>
                             </tr>
                             </tbody>
