@@ -1,0 +1,36 @@
+name: PHP Composer
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: mariadb:10.4.31
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER: app
+          MYSQL_PASSWORD: "!ChangeMe!"
+          MYSQL_DATABASE: app
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run Symfony migrations for test database
+        run: php bin/console doctrine:migrations:migrate --env=test
+
+      - name: Run PHPUnit with Database Tests
+        run: php bin/phpunit
