@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="text-center mt-4 mb-4">Vos budgets</h1>
 
-        <a href="{{ path('app_budget_add') }}" class="btn btn-success mb-4">Ajouter un budget</a>
+        <a href="{{ path('app_budget_add') }}" class="btn btn-success mb-4">Créer un budget</a>
         <a href="{{ path('app_logout') }}" class="btn btn-outline-success mb-4">Déconnexion</a>
 
         {% for budget in budgets %}
@@ -43,6 +43,8 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <p>Vous n'avez pas encore créé.e de budget !</p>
         {% endfor %}
     </div>
 {% endblock %}
