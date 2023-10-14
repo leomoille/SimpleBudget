@@ -22,7 +22,7 @@ class Budget
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'budget', targetEntity: BudgetEntry::class)]
+    #[ORM\OneToMany(mappedBy: 'budget', targetEntity: BudgetEntry::class, cascade: ['persist'])]
     private Collection $budgetEntries;
 
     public function __construct()
