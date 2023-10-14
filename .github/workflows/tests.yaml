@@ -15,7 +15,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_USER: app
           MYSQL_PASSWORD: "!ChangeMe!"
-          MYSQL_DATABASE: app
+          MYSQL_DATABASE: app_test
 
     steps:
       - name: Checkout repository
