@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ budget.name }} - SimpleBudget{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-4 mb-4">{{ budget.name }}</h1>
+        <a href="{{ path('app_budget') }}" class="btn btn-primary">Retour à la liste des budgets</a>
+        <hr class="my-4">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Montant</th>
+                    <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                {% for entry in budget.budgetEntries %}
+                    <tr>
+                        <td>{{ entry.name }}</td>
+                        <td>{{ entry.value / 100 }}</td>
+                        <td>{{ entry.notes }}</td>
+                    </tr>
+                {% endfor %}
+                <tr class="fw-bold">
+                    <td>Total</td>
+                    <td>{{ budget.getTotal }}</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-4">
+            <a href="{{ path('app_budget_single_edit', {id: budget.id}) }}" class="btn btn-primary">Modifier</a>
+            <a href="{{ path('app_budget') }}" class="btn btn-outline-danger">Supprimer</a>
+        </div>
+    </div>
+{% endblock %}
+
