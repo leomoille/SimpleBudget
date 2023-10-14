@@ -28,8 +28,13 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
-    {
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        UserAuthenticatorInterface $userAuthenticator,
+        AppAuthenticator $authenticator,
+        EntityManagerInterface $entityManager
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -47,14 +52,18 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('no-reply@leomoille.com', 'SimpleBudget'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('Merci de confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
+
+            $this->addFlash('success', 'Un email d\'activation vous a été envoyé.');
 
             return $userAuthenticator->authenticateUser(
                 $user,
@@ -85,5 +94,29 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Votre adresse email a bien été confirmé. Bienvenue sur SimpleBudget !');
 
         return $this->redirectToRoute('app_budget');
+    }
+
+    #[Route('/verify/resend', name: 'app_verify_resend_email')]
+    public function resendEmail(Request $request, TranslatorInterface $translator): Response
+    {
+        $this->emailVerifier->sendEmailConfirmation(
+            'app_verify_email',
+            $this->getUser(),
+            (new TemplatedEmail())
+                ->from(new Address('no-reply@leomoille.com', 'SimpleBudget'))
+                ->to($this->getUser()->getUserIdentifier())
+                ->subject('Merci de confirmer votre email')
+                ->htmlTemplate('registration/confirmation_email.html.twig')
+        );
+
+        $this->addFlash('success', 'Un email vous a été renvoyé.');
+
+        return $this->redirectToRoute('app_check_email');
+    }
+
+    #[Route('/email-check', name: 'app_check_email')]
+    public function emailCheck(): Response
+    {
+        return $this->render('registration/check_email.html.twig');
     }
 }

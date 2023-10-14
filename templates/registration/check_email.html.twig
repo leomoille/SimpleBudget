@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vérifiez votre email - SimpleBudget{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Vérifiez votre email pour activer votre compte</h1>
+        <p>Un lien d'activation vous a été envoyé par mail.</p>
+
+        <hr>
+
+        <p>Vous n'avez rien reçu ?</p>
+        <a href="{{ path('app_verify_resend_email') }}" class="btn btn-primary">Renvoyer un lien</a>
+    </div>
+{% endblock %}
