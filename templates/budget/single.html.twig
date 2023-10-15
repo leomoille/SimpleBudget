@@ -34,7 +34,12 @@
         </div>
         <div class="mt-4">
             <a href="{{ path('app_budget_single_edit', {id: budget.id}) }}" class="btn btn-primary">Modifier</a>
-            <a href="{{ path('app_budget_single_delete', {id: budget.id}) }}" class="btn btn-outline-danger">Supprimer</a>
+            <a href="{{ path('app_budget_single_delete', {id: budget.id}) }}"
+               class="btn btn-outline-danger">Supprimer</a>
+        </div>
+
+        <div class="mb-4 m-auto" style="max-height: 400px; max-width: 400px;">
+            {{ render_chart(chart) }}
         </div>
     </div>
 {% endblock %}
