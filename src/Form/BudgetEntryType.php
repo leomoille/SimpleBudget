@@ -16,13 +16,16 @@ class BudgetEntryType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom',
+                'help' => 'Nom de votre entrée dans le budget.',
             ])
             ->add('value', NumberType::class, [
                 'label' => 'Montant',
+                'help' => 'Le montant de cette entrée.',
             ])
             ->add('notes', TextType::class, [
                 'label' => 'Notes additionnelles',
                 'required' => false,
+                'help' => 'Ajoutez ici des commentaires (optionnel).',
             ]);
     }
 

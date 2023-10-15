@@ -8,7 +8,7 @@ a2lix_lib.sfCollection.init({
       prototype:
           '<button class="__class__" data-entry-action="add">__label__</button>',
       class: 'btn btn-primary',
-      label: 'Ajouter',
+      label: 'Ajouter une entrée',
       customFn: null,
       onBeforeFn: null,
       onAfterFn: null
@@ -17,7 +17,7 @@ a2lix_lib.sfCollection.init({
       prototype:
           '<button class="__class__" data-entry-action="remove">__label__</button>',
       class: 'btn btn-danger',
-      label: 'Retirer',
+      label: 'Supprimer',
       customFn: null,
       onAfterFn: null
     }

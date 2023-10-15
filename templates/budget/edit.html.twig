@@ -5,18 +5,27 @@
 
 {% block body %}
     <div class="container mx-auto px-4">
+        <div class="mb-4">
+            <a href="{{ path('app_budget') }}" class="btn btn-outline-primary mt-4">Retour à la liste des budgets</a>
+        </div>
+
+        <p>Mettez à jour votre budget "{{ budget.name }}" puis enregistrez vos modifications.</p>
+        <hr>
+
         {{ form_start(budgetForm) }}
 
         {{ form_row(budgetForm.name) }}
 
-        <div class="mt-4">
+        <div class="mt-4 mb-4">
             {{ form_label(budgetForm.budgetEntries) }}
             {{ form_errors(budgetForm.budgetEntries) }}
             {{ form_widget(budgetForm.budgetEntries) }}
         </div>
-        <div class="mb-3 row">
+
+        <div class="mb-4">
             <button type="submit" class="btn btn-success mt-4">Mettre à jour mon budget</button>
         </div>
+
         {{ form_end(budgetForm) }}
     </div>
 {% endblock %}

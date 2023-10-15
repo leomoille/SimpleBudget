@@ -11,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class BudgetController extends AbstractController
 {
@@ -109,7 +111,7 @@ class BudgetController extends AbstractController
     }
 
     #[Route('/budgets/{id}', name: 'app_budget_single')]
-    public function budget(Budget $budget = null): Response
+    public function budget(ChartBuilderInterface $chartBuilder, Budget $budget = null): Response
     {
         $user = $this->getUser();
 
@@ -121,6 +123,34 @@ class BudgetController extends AbstractController
             return $this->redirectToRoute('app_budget');
         }
 
-        return $this->render('budget/single.html.twig', ['budget' => $budget]);
+        $labels = [];
+        $data = [];
+
+        foreach ($budget->getBudgetEntries() as $entry) {
+            $labels[] = $entry->getName();
+            $data[] = $entry->getValue();
+        }
+
+        // dd($labels);
+
+        $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+        $chart->setData([
+            'labels' => $labels,
+            'datasets' => [
+                [
+                    'label' => 'My First dataset',
+                    'backgroundColor' => ['yellow', 'green', 'blue', 'purple', 'brown', 'cyan'],
+                    'borderColor' => 'white',
+                    'data' => $data,
+                ],
+            ],
+        ]);
+        $chart->setOptions([
+        ]);
+
+        return $this->render('budget/single.html.twig', [
+            'budget' => $budget,
+            'chart' => $chart,
+        ]);
     }
 }
