@@ -32,6 +32,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ${{ secrets.APP_PATH }}
+            git reset --hard origin/main
             git pull
 
       - name: Install Composer dependencies
