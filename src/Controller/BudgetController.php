@@ -131,21 +131,43 @@ class BudgetController extends AbstractController
             $data[] = $entry->getValue();
         }
 
-        // dd($labels);
-
         $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
         $chart->setData([
             'labels' => $labels,
             'datasets' => [
                 [
-                    'label' => 'My First dataset',
-                    'backgroundColor' => ['yellow', 'green', 'blue', 'purple', 'brown', 'cyan'],
+                    'label' => $budget->getName(),
+                    'backgroundColor' => [
+                        'rgb(255, 223, 186)',
+                        'rgb(186, 255, 186)',
+                        'rgb(186, 186, 255)',
+                        'rgb(223, 186, 255)',
+                        'rgb(229, 204, 255)',
+                        'rgb(186, 255, 255)',
+                        'rgb(255, 186, 186)',
+                        'rgb(255, 215, 186)',
+                        'rgb(186, 186, 186)',
+                        'rgb(235, 235, 186)',
+                        'rgb(186, 235, 235)',
+                        'rgb(255, 204, 186)',
+                        'rgb(255, 186, 255)',
+                        'rgb(186, 186, 235)',
+                        'rgb(186, 255, 186)',
+                        'rgb(235, 186, 186)',
+                        'rgb(186, 235, 186)',
+                        'rgb(255, 235, 186)',
+                        'rgb(204, 186, 255)',
+                        'rgb(235, 186, 186)',
+                        'rgb(223, 255, 186)',
+                        'rgb(204, 186, 186)',
+                        'rgb(186, 255, 235)',
+                        'rgb(186, 255, 255)',
+                        'rgb(255, 186, 204)',
+                    ],
                     'borderColor' => 'white',
                     'data' => $data,
                 ],
             ],
-        ]);
-        $chart->setOptions([
         ]);
 
         return $this->render('budget/single.html.twig', [
