@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  ###> doctrine/doctrine-bundle ###
   database:
     image: mariadb:${MARIADB_VERSION:-10.4.31}-focal
     environment:
@@ -14,11 +15,14 @@ services:
     links:
       - database
     ports:
-      - "8080:80" # Vous pouvez changer le port si nécessaire
+      - "8080:80"
     environment:
       PMA_HOST: database
-      PMA_PORT: 3306 # Port par défaut de MariaDB
+      PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-!ChangeMe!}
+###< doctrine/doctrine-bundle ###
 
 volumes:
+  ###> doctrine/doctrine-bundle ###
   database_data:
+###< doctrine/doctrine-bundle ###
