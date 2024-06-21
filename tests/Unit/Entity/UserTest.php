@@ -10,11 +10,11 @@ class UserTest extends TestCase
 {
     public function testGettersAndSetters()
     {
-        $user = new User();
-        $email = 'test@example.com';
-        $roles = ['ROLE_USER'];
+        $user     = new User();
+        $email    = 'test@example.com';
+        $roles    = ['ROLE_USER'];
         $password = 'password123';
-        $pseudo = 'TestUser';
+        $pseudo   = 'TestUser';
 
         $user
             ->setEmail($email)
@@ -32,7 +32,7 @@ class UserTest extends TestCase
 
     public function testBudgetRelationship()
     {
-        $user = new User();
+        $user   = new User();
         $budget = new Budget();
 
         $user->addBudget($budget);

@@ -13,7 +13,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $user = UserFactory::createOne([
-            'email' => 'name@email.com',
+            'email'      => 'name@email.com',
             'isVerified' => true,
         ]);
         $budgetEntry = [
@@ -23,11 +23,11 @@ class AppFixtures extends Fixture
         ];
         BudgetFactory::createOne([
             'budgetEntries' => $budgetEntry,
-            'user' => $user,
+            'user'          => $user,
         ]);
 
         $user2 = UserFactory::createOne([
-            'email' => 'name2@email.com',
+            'email'      => 'name2@email.com',
             'isVerified' => true,
         ]);
         $budgetEntry2 = [
@@ -37,7 +37,7 @@ class AppFixtures extends Fixture
         ];
         BudgetFactory::createOne([
             'budgetEntries' => $budgetEntry2,
-            'user' => $user2,
+            'user'          => $user2,
         ]);
     }
 }

@@ -86,7 +86,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "php-fix": "vendor/bin/php-cs-fixer fix",
+        "run-tests": "symfony php bin/phpunit --coverage-html=\"tests/CodeCoverage\""
     },
     "conflict": {
         "symfony/symfony": "*"

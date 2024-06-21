@@ -92,7 +92,7 @@ class Budget
     public function getTotal(): float
     {
         $entries = $this->getBudgetEntries();
-        $total = 0.0;
+        $total   = 0.0;
 
         foreach ($entries as $entry) {
             $total += $entry->getValue();

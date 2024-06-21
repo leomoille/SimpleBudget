@@ -27,7 +27,7 @@ class UserAuthorizationChecker
         return null !== $currentUser && $currentUser->isVerified();
     }
 
-    public function checkBudgetAccess(UserInterface $user, Budget $budget = null): bool
+    public function checkBudgetAccess(UserInterface $user, ?Budget $budget = null): bool
     {
         return null !== $budget && $user === $budget->getUser();
     }

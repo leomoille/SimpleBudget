@@ -16,15 +16,15 @@ class BudgetType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Nom du budget',
-                'help' => 'Choisissez un nom précis pour votre budget.',
+                'help'  => 'Choisissez un nom précis pour votre budget.',
             ])
             ->add('budgetEntries', CollectionType::class, [
-                'entry_type' => BudgetEntryType::class,
+                'entry_type'    => BudgetEntryType::class,
                 'entry_options' => ['label' => false],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'label' => 'Entrées du budget',
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'by_reference'  => false,
+                'label'         => 'Entrées du budget',
             ]);
     }
 
