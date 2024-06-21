@@ -14,7 +14,7 @@ class UserAuthorizationCheckerTest extends TestCase
     public function testIsVerifiedWithUser()
     {
         $userRepository = $this->createMock(UserRepository::class);
-        $checker = new UserAuthorizationChecker($userRepository);
+        $checker        = new UserAuthorizationChecker($userRepository);
 
         $user = new User();
         $user->setIsVerified(true);
@@ -30,7 +30,7 @@ class UserAuthorizationCheckerTest extends TestCase
     public function testIsVerifiedWithNonUser()
     {
         $userRepository = $this->createMock(UserRepository::class);
-        $checker = new UserAuthorizationChecker($userRepository);
+        $checker        = new UserAuthorizationChecker($userRepository);
 
         $nonUser = $this->createMock(UserInterface::class);
 
@@ -40,9 +40,9 @@ class UserAuthorizationCheckerTest extends TestCase
     public function testCheckBudgetAccessWithMatchingUser()
     {
         $userRepository = $this->createMock(UserRepository::class);
-        $checker = new UserAuthorizationChecker($userRepository);
+        $checker        = new UserAuthorizationChecker($userRepository);
 
-        $user = new User();
+        $user   = new User();
         $budget = new Budget();
         $budget->setUser($user);
 
@@ -52,10 +52,10 @@ class UserAuthorizationCheckerTest extends TestCase
     public function testCheckBudgetAccessWithNonMatchingUser()
     {
         $userRepository = $this->createMock(UserRepository::class);
-        $checker = new UserAuthorizationChecker($userRepository);
+        $checker        = new UserAuthorizationChecker($userRepository);
 
-        $user1 = new User();
-        $user2 = new User();
+        $user1  = new User();
+        $user2  = new User();
         $budget = new Budget();
         $budget->setUser($user1);
 
@@ -65,7 +65,7 @@ class UserAuthorizationCheckerTest extends TestCase
     public function testCheckBudgetAccessWithNullBudget()
     {
         $userRepository = $this->createMock(UserRepository::class);
-        $checker = new UserAuthorizationChecker($userRepository);
+        $checker        = new UserAuthorizationChecker($userRepository);
 
         $user = new User();
 

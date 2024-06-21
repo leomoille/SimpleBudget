@@ -1,4 +1,6 @@
 .idea
+.vscode
+/tests/CodeCoverage/
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -31,3 +33,9 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+

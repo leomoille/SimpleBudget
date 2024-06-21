@@ -12,8 +12,8 @@ class BudgetTest extends TestCase
     public function testGettersAndSetters()
     {
         $budget = new Budget();
-        $name = 'Test Budget';
-        $user = new User();
+        $name   = 'Test Budget';
+        $user   = new User();
 
         $budget
             ->setName($name)
@@ -25,7 +25,7 @@ class BudgetTest extends TestCase
 
     public function testAddAndRemoveBudgetEntry()
     {
-        $budget = new Budget();
+        $budget      = new Budget();
         $budgetEntry = new BudgetEntry();
 
         $budget->addBudgetEntry($budgetEntry);
@@ -37,7 +37,7 @@ class BudgetTest extends TestCase
 
     public function testTotal()
     {
-        $budget = new Budget();
+        $budget       = new Budget();
         $budgetEntry1 = new BudgetEntry();
         $budgetEntry1->setValue(1000.50);
         $budgetEntry2 = new BudgetEntry();

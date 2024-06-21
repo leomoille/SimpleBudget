@@ -30,12 +30,12 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                'label' => 'Mot de passe',
+                'label'  => 'Mot de passe',
                 'mapped' => false,
-                'attr' => [
+                'attr'   => [
                     'autocomplete' => 'new-password',
-                    'class' => 'w-full py-2 px-3 border rounded',
-                    ],
+                    'class'        => 'w-full py-2 px-3 border rounded',
+                ],
                 'label_attr' => [
                     'class' => 'block text-sm font-bold mb-2',
                 ],
@@ -44,7 +44,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez saisir un mot de passe.',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min'        => 6,
                         'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères.',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
@@ -52,8 +52,8 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'J\'accepte les conditions.',
-                'mapped' => false,
+                'label'       => 'J\'accepte les conditions.',
+                'mapped'      => false,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter les conditions d\'utilisation.',

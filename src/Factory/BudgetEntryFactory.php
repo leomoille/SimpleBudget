@@ -43,7 +43,7 @@ final class BudgetEntryFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'name' => self::faker()->word(),
+            'name'  => self::faker()->word(),
             'value' => self::faker()->numberBetween(5000, 10000),
         ];
     }

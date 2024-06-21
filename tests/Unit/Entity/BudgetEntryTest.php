@@ -11,10 +11,10 @@ class BudgetEntryTest extends TestCase
     public function testGettersAndSetters()
     {
         $budgetEntry = new BudgetEntry();
-        $name = 'Test Entry';
-        $value = 1000.50;
-        $notes = 'This is a test entry';
-        $budget = new Budget();
+        $name        = 'Test Entry';
+        $value       = 1000.50;
+        $notes       = 'This is a test entry';
+        $budget      = new Budget();
 
         $budgetEntry
             ->setName($name)
@@ -31,7 +31,7 @@ class BudgetEntryTest extends TestCase
     public function testValueConversion()
     {
         $budgetEntry = new BudgetEntry();
-        $value = 1000.50;
+        $value       = 1000.50;
 
         $budgetEntry->setValue($value);
 

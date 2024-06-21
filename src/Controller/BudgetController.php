@@ -43,7 +43,7 @@ class BudgetController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 
-        $budget = new Budget();
+        $budget     = new Budget();
         $budgetForm = $this->createForm(BudgetType::class, $budget);
         $budgetForm->handleRequest($request);
 
@@ -62,7 +62,7 @@ class BudgetController extends AbstractController
     }
 
     #[Route('/budgets/{id}/edit', name: 'app_budget_single_edit')]
-    public function edit(Request $request, EntityManagerInterface $manager, Budget $budget = null): Response
+    public function edit(Request $request, EntityManagerInterface $manager, ?Budget $budget = null): Response
     {
         $user = $this->getUser();
 
@@ -90,7 +90,7 @@ class BudgetController extends AbstractController
     }
 
     #[Route('/budgets/{id}/remove', name: 'app_budget_single_delete')]
-    public function remove(EntityManagerInterface $manager, Budget $budget = null): Response
+    public function remove(EntityManagerInterface $manager, ?Budget $budget = null): Response
     {
         $user = $this->getUser();
 
@@ -111,7 +111,7 @@ class BudgetController extends AbstractController
     }
 
     #[Route('/budgets/{id}', name: 'app_budget_single')]
-    public function budget(ChartBuilderInterface $chartBuilder, Budget $budget = null): Response
+    public function budget(ChartBuilderInterface $chartBuilder, ?Budget $budget = null): Response
     {
         $user = $this->getUser();
 
@@ -124,19 +124,19 @@ class BudgetController extends AbstractController
         }
 
         $labels = [];
-        $data = [];
+        $data   = [];
 
         foreach ($budget->getBudgetEntries() as $entry) {
             $labels[] = $entry->getName();
-            $data[] = $entry->getValue();
+            $data[]   = $entry->getValue();
         }
 
         $chart = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
         $chart->setData([
-            'labels' => $labels,
+            'labels'   => $labels,
             'datasets' => [
                 [
-                    'label' => $budget->getName(),
+                    'label'           => $budget->getName(),
                     'backgroundColor' => [
                         'rgb(255, 223, 186)',
                         'rgb(186, 255, 186)',
@@ -165,14 +165,14 @@ class BudgetController extends AbstractController
                         'rgb(255, 186, 204)',
                     ],
                     'borderColor' => 'white',
-                    'data' => $data,
+                    'data'        => $data,
                 ],
             ],
         ]);
 
         return $this->render('budget/single.html.twig', [
             'budget' => $budget,
-            'chart' => $chart,
+            'chart'  => $chart,
         ]);
     }
 }
