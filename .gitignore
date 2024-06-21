@@ -1,4 +1,6 @@
 .idea
+.vscode
+/tests/CodeCoverage/
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -36,3 +38,4 @@ yarn-error.log
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
